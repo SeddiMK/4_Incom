@@ -45,7 +45,7 @@
 // 	opacity: 0;
 // }
 
-.objects-button-left {
+.swiper-button-prev {
 	position: absolute;
 	z-index: 1;
 	top: 50%;
@@ -59,7 +59,7 @@
 	//opacity: 0.3;
 }
 
-.objects-button-right {
+.swiper-button-next {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);

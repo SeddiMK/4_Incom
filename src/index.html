@@ -147,65 +147,44 @@
 			<section class="catalog">
 				<div class="catalog__container">
 					<h4 class="catalog__title">Каталог <span>недвижимости</span></h4>
-					<div class="catalog__btn-block">
-						<button class="catalog__btn-secondary button button--hover-white  button--pading23-35" type="button"
-							aria-label="Кнопка Квартиры и новостройки">Квартиры и новостройки</button>
-						<button class="catalog__btn-new-buildings button button--hover-white button--pading23-35" type="button"
-							aria-label="Кнопка новостройки">Новостройки</button>
-						<button class="catalog__btn-rent button button--hover-white button--pading23-35" type="button"
-							aria-label="Кнопка Аренда квартир и комнат">Аренда квартир и комнат</button>
-						<button class="catalog__btn-house button button--hover-white button--pading23-35" type="button"
-							aria-label="Кнопка Загородная">Загородная</button>
+					<div class="catalog__btn-block" id="myBtnContainer">
+						<button class="catalog__btn-secondary button active button--hover-white  button--pading23-35"
+							onclick="filterSelection('all')" type="button" aria-label="Кнопка Квартиры и новостройки">Квартиры и
+							новостройки</button>
+						<button class="catalog__btn-new-buildings button button--hover-white button--pading23-35"
+							onclick="filterSelection('nature')" type="button" aria-label="Кнопка новостройки">Новостройки</button>
+						<button class="catalog__btn-rent button button--hover-white button--pading23-35"
+							onclick="filterSelection('cars')" type="button" aria-label="Кнопка Аренда квартир и комнат">Аренда квартир
+							и комнат</button>
+						<button class="catalog__btn-house button button--hover-white button--pading23-35"
+							onclick="filterSelection('people')" type="button" aria-label="Кнопка Загородная">Загородная</button>
 					</div>
 					<div class="catalog__slider-wrp">
-						<div class="catalog__slider objects-swiper">
+						<div class="catalog__slider swiper">
 							<div class="catalog__wrapper swiper-wrapper">
-								<div class="catalog__slide swiper-slide">
-									<div class="swiper-container attached-swiper">
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<img src="@img/catalog/catalog-swiper/wrapper-secondary/680-536x354.jpg" alt="Фото квартиры">
-											</div>
-											<div class="swiper-slide">
-												<img src="@img/catalog/catalog-swiper/wrapper-secondary/680-536x354.jpg" alt="Фото квартиры">
-											</div>
-											<div class="swiper-slide">
-												<img src="@img/catalog/catalog-swiper/wrapper-secondary/680-536x354.jpg" alt="Фото квартиры">
-											</div>
-											<div class="swiper-slide">
-												<img src="@img/catalog/catalog-swiper/wrapper-secondary/680-536x354.jpg" alt="Фото квартиры">
-											</div>
-										</div>
-									</div>
+								<div class="swiper-slide">
+									<img src="@img/catalog/catalog-swiper/wrapper-secondary/680-536x354.jpg" alt="Фото квартиры">
+								</div>
+								<div class="swiper-slide">
+									<img src="@img/catalog/catalog-swiper/wrapper-secondary/680-536x354.jpg" alt="Фото квартиры">
+								</div>
+								<div class="swiper-slide">
+									<img src="@img/catalog/catalog-swiper/wrapper-secondary/680-536x354.jpg" alt="Фото квартиры">
+								</div>
 
 
+								<div class="swiper-slide">
+									<img src="@img/catalog/catalog-swiper/new-buildings/866-536x354.jpg" alt="Фото квартиры новостройки">
 								</div>
-								<div class="catalog__slide swiper-slide">
-									<div class="swiper-container attached-swiper">
-										<div class="swiper-wrapper">
-											<div class="swiper-slide">
-												<img src="@img/catalog/catalog-swiper/new-buildings/866-536x354.jpg"
-													alt="Фото квартиры новостройки">
-											</div>
-											<div class="swiper-slide">
-												<img src="@img/catalog/catalog-swiper/new-buildings/866-536x354.jpg"
-													alt="Фото квартиры новостройки">
-											</div>
-											<div class="swiper-slide">
-												<img src="@img/catalog/catalog-swiper/new-buildings/866-536x354.jpg"
-													alt="Фото квартиры новостройки">
-											</div>
-											<div class="swiper-slide">
-												<img src="@img/catalog/catalog-swiper/new-buildings/866-536x354.jpg"
-													alt="Фото квартиры новостройки">
-											</div>
-										</div>
-									</div>
-								</div>
+
+
 
 							</div>
 
-							<!-- <div class="swiper-slide__info info-swiper-slide">
+
+						</div>
+
+						<!-- <div class="swiper-slide__info info-swiper-slide">
 							<div class="info-swiper-slide__object"><span>3-комн. квартира, 125,4 м²</span> в ЖК «Река», Квартал 10
 								корпус 1, сдача в 4 кв. 2021</div>
 							<div class="info-swiper-slide__object-info info-object">
@@ -232,14 +211,14 @@
 							</div>
 						</div> -->
 
-						</div>
-						<div class="objects-button-left" onClick="clickNavigate(-1)"></div>
-						<div class="objects-button-right" onClick="clickNavigate(1)"></div>
 					</div>
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
 				</div>
-			</section>
-		</main>
-		@@include('html/_footer.htm',{})
+	</div>
+	</section>
+	</main>
+	@@include('html/_footer.htm',{})
 	</div>
 	@@include('html/_popup.htm',{})
 	@@include('html/_js.htm',{})
