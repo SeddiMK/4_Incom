@@ -18,10 +18,10 @@ EffectFade, Lazy, Manipulation
 // Стили Swiper
 // Базовые стили
 import "../../scss/base/swiper.scss";
-// Полный набор стилей из scss/libs/swiper.scss
-// import "../../scss/libs/swiper.scss";
+//Полный набор стилей из scss/libs/swiper.scss
+//import "../../scss/libs/swiper.scss";
 // Полный набор стилей из node_modules
-// import 'swiper/css';
+//import 'swiper/css';
 
 // Инициализация слайдеров
 function initSliders() {
@@ -37,8 +37,8 @@ function initSliders() {
 			observeParents: true,
 			slidesPerView: 1,
 			spaceBetween: 0,
-			autoHeight: true,
-			speed: 800,
+			//autoHeight: true,
+			//speed: 800,
 
 			//touchRatio: 0,
 			//simulateTouch: false,
@@ -141,3 +141,99 @@ window.addEventListener("load", function (e) {
 	// Запуск инициализации скролла на базе слайдера (по классу swiper_scroll)
 	//initSlidersScroll();
 });
+// ==================Переход к определенному слайду =====================
+
+
+//swiper.slideTo(index, speed, runCallbacks)
+//======== Переключение слайдеров 4 в 1 ================================
+var menu_obj = ['Все', 'Последние']
+
+// в переменной будут храниться все созданные слайдеры
+const instanceNestedSlider = {}
+// индекс активного вложенного слайдера
+let activeNestedSlider = 0
+// функция создания нового вложенного слайдера
+const createNestedSlider = (el) => {
+	return new Swiper(el, {
+		loop: true,
+		nested: true,
+
+		observer: true,
+		observeParents: true,
+		// pagination: {
+		// 	el: '.swiper-pagination-objects',
+		// 	type: 'fraction',
+		// },
+		slidesPerView: 1,
+		//spaceBetween: 30,
+		// отключаем навигацию по умолчанию, так как у нас будет одна для всех
+		// navigation: {
+		//   nextEl: '.objects-button-right',
+		//   prevEl: '.objects-button-left',
+		// },
+	})
+}
+// Пользовательский функционал навигации
+// так как она общая для всех вложенных слайдеров
+// берет активный слайдер и меняет слайды
+const clickNavigate = function (i) {
+	if (i > 0) {
+		instanceNestedSlider[activeNestedSlider].slideNext()
+	} else {
+		instanceNestedSlider[activeNestedSlider].slidePrev()
+	}
+}
+
+const ObjSlider = new Swiper('.objects-swiper', {
+	pagination: {
+		el: '.swiper-pagination-attached',
+		clickable: true,
+		observer: true,
+		observeParents: true,
+		renderBullet: function (index, className) {
+			return (
+				'<span class="' + className + '">' + menu_obj[index] + '</span>'
+			)
+		},
+	},
+	on: {
+		init: function (swiper) {
+			const nestedSlider =
+				swiper.slides[swiper.activeIndex].querySelector(
+					'.swiper-container'
+				)
+			// если есть вложенный контейнер слайдера
+			if (nestedSlider) {
+				// создаем слайдер
+				instanceNestedSlider[swiper.activeIndex] =
+					createNestedSlider(nestedSlider)
+				// устанавливаем его активным
+				activeNestedSlider = swiper.activeIndex
+			}
+		},
+		slideChange: function (swiper) {
+			// если среди созданных вложенных слайдеров нет с индексом текущего слайда
+			if (!instanceNestedSlider[swiper.activeIndex]) {
+				// если есть вложенный контейнер слайдера
+				const nestedSlider =
+					swiper.slides[swiper.activeIndex].querySelector(
+						'.swiper-container'
+					)
+				// создаем слайдер
+				instanceNestedSlider[swiper.activeIndex] =
+					createNestedSlider(nestedSlider)
+			} else {
+				// иначе переходим к первому слайдеру в активном вложенном слайдере
+				instanceNestedSlider[swiper.activeIndex].slideToLoop(
+					0,
+					1000,
+					true
+				)
+				instanceNestedSlider[swiper.activeIndex].update()
+				instanceNestedSlider[swiper.activeIndex].pagination.update()
+			}
+			// меняем индекс активного слайдера
+			activeNestedSlider = swiper.activeIndex
+		},
+	},
+})
