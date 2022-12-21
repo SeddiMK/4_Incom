@@ -1,0 +1,169 @@
+.sale-moscow {
+	background-image: url('@img/sale-moscow/bg/bg.jpg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	z-index: 1;
+
+	// .sale-moscow__container
+	&__container {
+
+		padding-top: rem(80);
+	}
+
+	// .sale-moscow__info
+	&__info {}
+}
+
+.info-sale-moscow {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0px 0px 70px 0px;
+
+	@media (max-width:$tablet) {
+		flex-direction: column;
+
+	}
+
+	// .info-sale-moscow__left-block
+	&__left-block {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		max-width: 50%;
+		padding: 190px 0;
+
+		@media (max-width:$tablet) {
+			padding: 0px 0px 65px 0px;
+		}
+
+		@media (max-width:$mobile) {
+			max-width: 100%;
+		}
+	}
+
+	// .info-sale-moscow__title
+	&__title {
+		@include adaptiveValue("font-size", 36, 25);
+		line-height: 119%;
+		font-weight: 700;
+		max-width: 480px;
+
+		&:not(:last-child) {
+			margin-bottom: rem(53);
+		}
+
+		span {
+			color: $mainColorSundance;
+		}
+	}
+
+	// .info-sale-moscow__text
+	&__text {
+		@include adaptiveValue("font-size", 18, 15);
+		line-height: 122%;
+		max-width: 640px;
+
+		p {
+			&:not(:last-child) {
+				margin-bottom: rem(29);
+			}
+		}
+
+	}
+
+	// .info-sale-moscow__card
+	&__card {}
+}
+
+.card-info-sale-moscow {
+	max-width: 450px;
+	position: relative;
+	top: 0;
+	right: 0;
+
+	padding: 36px 34px 43px 34px;
+	background-color: $mainColor;
+	border-radius: 10px;
+	font-size: rem(14);
+	line-height: 121%;
+	color: $mainColorTundora42;
+
+	&::after {
+		content: '';
+		position: absolute;
+		display: block;
+		z-index: -1;
+		top: 15px;
+		right: -24px;
+		width: 100%;
+		height: 100%;
+		// background-image: url('../img/sale-moscow/sale-moscow-card/bg.png');
+		// // background-position: 8% 8%;
+		// background-repeat: no-repeat;
+		//		background-size: cover;
+		border: 3px solid $mainColorSundance;
+		filter: drop-shadow(0px 4px 30px rgba(207, 165, 91, 0.5));
+		border-radius: 10px;
+
+		@media (max-width:570px) {
+			display: none;
+		}
+	}
+
+
+
+	// .card-info-sale-moscow__title
+	&__title {
+		font-size: rem(24);
+		line-height: 120%;
+		font-weight: 700;
+		color: $mainColorTundora42;
+
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 42, 20);
+		}
+	}
+
+	// .card-info-sale-moscow__text
+	&__text {
+		font-size: rem(14);
+		line-height: 121%;
+		color: $mainColorTundora42;
+
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 37, 18);
+		}
+	}
+
+	// .card-info-sale-moscow__list
+	&__list {
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 54, 24);
+		}
+
+		span {
+			font-weight: 700;
+			color: $mainColorSundance;
+		}
+	}
+
+	// .card-info-sale-moscow__item
+	&__item {
+		background: url('@img/sale-moscow/sale-moscow-card/item/bg.svg') no-repeat;
+		background-position: left center;
+		padding: 8px 0px 8px 53px;
+
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 25, 15);
+		}
+	}
+
+	// .card-info-sale-moscow__btn
+	&__btn {}
+}
+
+.button {}

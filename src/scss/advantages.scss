@@ -1,0 +1,236 @@
+.advantages {
+	position: relative;
+	top: 0;
+	left: 0;
+
+	//background: url('@img/advantages/bg/bottom-left.png') no-repeat bottom left;
+	@include adaptiveValue("padding-top", 78, 20);
+	@include adaptiveValue("margin-bottom", 118, 20);
+	/* .advantages__container */
+
+	&__bg {
+		position: absolute;
+		z-index: -1;
+
+		@media (max-width: 1200px) {
+			display: none;
+		}
+	}
+
+	.advantages__bg--right {
+		@include adaptiveValue("top", -156, 100, 1920, 320);
+		@include adaptiveValue("right", -520, 100, 1920, 320);
+		@include adaptiveValue("width", 1224, 300, 1920, 320);
+		@include adaptiveValue("height", 1224, 300, 1920, 320);
+		background: url('@img/advantages/bg/top-right-svg.svg') no-repeat; //-156px
+		background-position: center;
+	}
+
+	.advantages__bg--left {
+		@include adaptiveValue("bottom", -156, 100, 1920, 320);
+		@include adaptiveValue("left", -720, 100, 1920, 320);
+		@include adaptiveValue("width", 1224, 300, 1920, 320);
+		@include adaptiveValue("height", 1224, 300, 1920, 320);
+		background: url('@img/advantages/bg/top-left-svg.svg') no-repeat; //-156px
+		background-position: center;
+	}
+
+	&__container {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		counter-reset: factor;
+	}
+
+	/* .advantages__title */
+
+	&__title {
+		@include adaptiveValue("font-size", 36, 25);
+		line-height: 119%;
+		text-align: center;
+		color: $mainColorTundora42;
+
+		span {
+			color: $mainColorSundance;
+		}
+
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 51, 20);
+		}
+	}
+
+	/* .advantages__block */
+
+	&__block {
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 75, 20);
+		}
+	}
+}
+
+.block-advantages {
+	width: 100%;
+	/* .block-advantages__left */
+
+	&__left {}
+
+	/* .block-advantages__right */
+
+	&__right {}
+}
+
+.block-advantages--right-image {}
+
+
+
+
+/* .left-advantages__counter */
+
+.left-advantages__counter {
+
+	&::before {
+		counter-increment: factor 1;
+		content: '0' counter(factor);
+		font-family: 'Roboto';
+		font-style: normal;
+		font-weight: 900;
+		@include adaptiveValue("font-size", 96, 50);
+		line-height: 116%;
+		text-transform: uppercase;
+		color: $mainColorSundance;
+		opacity: 0.3;
+
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 48, 20);
+		}
+	}
+}
+
+.block-advantages__row {
+	display: flex;
+	align-items: flex-end;
+	width: 100%;
+
+	@media (max-width: 1230px) {
+		flex-wrap: wrap;
+		//justify-content: center;
+	}
+}
+
+
+
+
+.left-advantages {
+	flex: 1 1 100%;
+
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	@media (max-width: 1230px) {
+		align-items: center;
+		@include adaptiveValue("margin-bottom", 35, 10);
+	}
+
+	/* .left-advantages__title */
+
+	&__title {
+		@include adaptiveValue("font-size", 30, 20);
+		line-height: 120%;
+		text-transform: uppercase;
+		color: $mainColorTundora45;
+
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 42, 20);
+		}
+	}
+
+	/* .left-advantages__list */
+
+	&__list {
+		max-width: 460px;
+
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 43, 20);
+		}
+	}
+
+	/* .left-advantages__item */
+
+	&__item {
+		background: url('@img/advantages/li/Rectangle-5.6.svg') no-repeat;
+		background-position: left center;
+		padding: 9px 0px 9px 53px;
+
+		@include adaptiveValue("font-size", 18, 16);
+		line-height: 122%;
+		color: $mainColorTundora42;
+
+		span {
+			color: $mainColorSundance;
+		}
+
+		&:not(:last-child) {
+			@include adaptiveValue("margin-bottom", 32, 15);
+		}
+	}
+
+	/* .left-advantages__btn */
+
+	&__btn {
+		padding: 32px 66px;
+	}
+}
+
+.right-advantages {
+	flex: 0 1 100%;
+	height: 389px;
+
+
+
+	/* .right-advantages__image-ibg */
+
+	&__image-ibg {
+		width: 100%;
+		height: 100%;
+		text-align: right;
+		right: -40px;
+		object-fit: cover;
+		outline: 40px solid rgba(255, 255, 255, 0);
+
+		@media (max-width: 1230px) {
+			right: 0px;
+		}
+	}
+
+	/* .right-advantages__img */
+
+	&__img {}
+}
+
+.block-advantages--left-image {
+	.block-advantages__row {
+		display: flex;
+		flex-direction: row-reverse;
+	}
+
+	.right-advantages {
+		margin-right: 85px;
+
+		@media (max-width: 1230px) {
+			margin-right: -42.5px;
+		}
+	}
+
+	@media (max-width: 1230px) {
+		right: 0px;
+	}
+
+	.right-advantages__image-ibg {
+		text-align: left;
+		left: -40px;
+	}
+}
