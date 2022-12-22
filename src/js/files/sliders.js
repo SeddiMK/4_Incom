@@ -114,14 +114,17 @@ function initSliders() {
 // 	el.addEventListener("click", filterSelection, false);
 // else if (el.attachEvent)
 // 	el.attachEvent('onclick', filterSelection);
-document.getElementById("clickSecondary").onclick = filterSelection;
-document.getElementById("clickNewBuildings").onclick = filterSelection;
+// document.getElementById("clickSecondary").onclick = filterSelection;
+// document.getElementById("clickNewBuildings").onclick = filterSelection;
 //filterSelection('secondary') // Execute the function and show all columns
 //Выполнить функцию и показать все столбцы
 
+
+filterSelection()
 function filterSelection(c) {
 	var x, i;
-	x = document.getElementsByClassName("catalog__sld");// column
+	var catalogWrp = document.getElementById("catalogWrp");
+	x = catalogWrp.getElementsByClassName("catalog__sld");// column
 
 	//if (c == "secondary") c = "";
 
