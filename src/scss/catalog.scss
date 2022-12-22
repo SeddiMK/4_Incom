@@ -98,6 +98,8 @@
 
 .swiper-slide {
 	position: relative;
+	width: 100%;
+	//display: flex;
 
 	img {
 		position: absolute;
@@ -153,4 +155,8 @@
 
 .active-wrp {
 	//display: flex;
+}
+
+.catalog__sld {
+	//display: none;
 }

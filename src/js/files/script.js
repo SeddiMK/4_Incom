@@ -76,18 +76,18 @@ const wrpNewBuildings = document.querySelector('.catalog__wrapper-new-buildings'
 // }
 
 
-document.querySelector('button').addEventListener('click', function () {
-	var elementOne = document.getElementById('one');
-	var elementTwo = document.getElementById('two');
+// document.querySelector('button').addEventListener('click', function () {
+// 	var elementOne = document.getElementById('one');
+// 	var elementTwo = document.getElementById('two');
 
-	if (elementOne.classList.contains("hidden")) {
-		elementOne.classList.remove("hidden");
-		elementTwo.classList.add("hidden");
-	} else {
-		elementOne.classList.add("hidden");
-		elementTwo.classList.remove("hidden");
-	}
-})
+// 	if (elementOne.classList.contains("hidden")) {
+// 		elementOne.classList.remove("hidden");
+// 		elementTwo.classList.add("hidden");
+// 	} else {
+// 		elementOne.classList.add("hidden");
+// 		elementTwo.classList.remove("hidden");
+// 	}
+// })
 
 
 

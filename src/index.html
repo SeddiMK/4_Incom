@@ -148,39 +148,40 @@
 				<div class="catalog__container">
 					<h4 class="catalog__title">Каталог <span>недвижимости</span></h4>
 					<div class="catalog__btn-block" id="myBtnContainer">
-						<button class="catalog__btn-secondary button active button--hover-white  button--pading23-35"
-							onclick="filterSelection('all')" type="button" aria-label="Кнопка Квартиры и новостройки">Квартиры и
+						<button id="clickSecondary"
+							class="catalog__btn-secondary button active-btn button--hover-white  button--pading23-35"
+							onclick="filterSelection('secondary')" type="button" aria-label="Кнопка Квартиры и новостройки">Квартиры и
 							новостройки</button>
-						<button class="catalog__btn-new-buildings button button--hover-white button--pading23-35"
-							onclick="filterSelection('nature')" type="button" aria-label="Кнопка новостройки">Новостройки</button>
+						<button id="clickNewBuildings"
+							class="catalog__btn-new-buildings button button--hover-white button--pading23-35"
+							onclick="filterSelection('new-buildings')" type="button"
+							aria-label="Кнопка новостройки">Новостройки</button>
 						<button class="catalog__btn-rent button button--hover-white button--pading23-35"
-							onclick="filterSelection('cars')" type="button" aria-label="Кнопка Аренда квартир и комнат">Аренда квартир
+							onclick="filterSelection('rent')" type="button" aria-label="Кнопка Аренда квартир и комнат">Аренда квартир
 							и комнат</button>
 						<button class="catalog__btn-house button button--hover-white button--pading23-35"
-							onclick="filterSelection('people')" type="button" aria-label="Кнопка Загородная">Загородная</button>
+							onclick="filterSelection('house')" type="button" aria-label="Кнопка Загородная">Загородная</button>
 					</div>
 					<div class="catalog__slider-wrp">
 						<div class="catalog__slider swiper">
 							<div class="catalog__wrapper swiper-wrapper">
-								<div class="swiper-slide">
+								<div class="catalog__sld secondary swiper-slide">
 									<img src="@img/catalog/catalog-swiper/wrapper-secondary/680-536x354.jpg" alt="Фото квартиры">
 								</div>
-								<div class="swiper-slide">
+								<div class="catalog__sld secondary swiper-slide">
 									<img src="@img/catalog/catalog-swiper/wrapper-secondary/680-536x354.jpg" alt="Фото квартиры">
 								</div>
-								<div class="swiper-slide">
+								<div class="catalog__sld secondary swiper-slide">
 									<img src="@img/catalog/catalog-swiper/wrapper-secondary/680-536x354.jpg" alt="Фото квартиры">
 								</div>
 
-
-								<div class="swiper-slide">
+								<div class="catalog__sld new-buildings swiper-slide">
 									<img src="@img/catalog/catalog-swiper/new-buildings/866-536x354.jpg" alt="Фото квартиры новостройки">
 								</div>
 
 
 
 							</div>
-
 
 						</div>
 
@@ -210,10 +211,10 @@
 								</div>
 							</div>
 						</div> -->
-
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
 					</div>
-					<div class="swiper-button-prev"></div>
-					<div class="swiper-button-next"></div>
+
 				</div>
 	</div>
 	</section>

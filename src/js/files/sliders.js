@@ -33,8 +33,8 @@ function initSliders() {
 			// Подключаем модули слайдера
 			// для конкретного случая
 			modules: [Navigation],
-			observer: true,
-			observeParents: true,
+			//observer: true,
+			//observeParents: true,
 			slidesPerView: 1,
 			spaceBetween: 0,
 			//autoHeight: true,
@@ -108,20 +108,38 @@ function initSliders() {
 }
 
 // ==================Переход к определенному слайду =====================
-//filterSelection("all") // Execute the function and show all columns
+
+//var el = document.getElementById("clickSecondary");
+// if (el.addEventListener)
+// 	el.addEventListener("click", filterSelection, false);
+// else if (el.attachEvent)
+// 	el.attachEvent('onclick', filterSelection);
+document.getElementById("clickSecondary").onclick = filterSelection;
+document.getElementById("clickNewBuildings").onclick = filterSelection;
+//filterSelection('secondary') // Execute the function and show all columns
 //Выполнить функцию и показать все столбцы
+
 function filterSelection(c) {
 	var x, i;
-	x = document.getElementsByClassName("swiper-slide");// column
-	if (c == "all") c = "";
+	x = document.getElementsByClassName("catalog__sld");// column
+
+	//if (c == "secondary") c = "";
+
 	// Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
 	// Добавьте класс «show» (display: block) к отфильтрованным элементам и удалите класс «show» из элементов, которые не выбраны.
 	for (i = 0; i < x.length; i++) {
-		w3RemoveClass(x[i], "show");
-		if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
-	}
-}
+		w3RemoveClass(x[i], "swiper-slide");//show
 
+		if (x[i].className.indexOf(c) > -1) {
+			w3AddClass(x[i], "swiper-slide")
+		};//show
+	}
+
+}
+// var x, i;
+// x = document.getElementsByClassName("catalog__sld");
+//w3AddClass(x[0], "swiper-slide");
+//console.log(x);
 // Show filtered elements
 // Показать отфильтрованные элементы
 function w3AddClass(element, name) {
@@ -155,11 +173,13 @@ var btnContainer = document.getElementById("myBtnContainer");
 var btns = btnContainer.getElementsByClassName("button"); //btn
 for (var i = 0; i < btns.length; i++) {
 	btns[i].addEventListener("click", function () {
-		var current = document.getElementsByClassName("active");
-		current[0].className = current[0].className.replace(" active", "");
-		this.className += " active";
+		var current = document.getElementsByClassName("active-btn");
+		current[0].className = current[0].className.replace(" active-btn", "");
+		this.className += " active-btn";
 	});
 }
+
+
 
 //swiper.slideTo(index, speed, runCallbacks)
 //======== Переключение слайдеров 4 в 1 ================================
@@ -254,3 +274,18 @@ for (var i = 0; i < btns.length; i++) {
 // 		},
 // 	},
 // })
+
+
+
+
+
+
+///////////////// Не удалять !!!!!!!!!!!!!!!!!!!!!
+window.addEventListener("load", function (e) {
+	// Запуск инициализации слайдеров
+	initSliders();
+	// Запуск инициализации скролла на базе слайдера (по классу swiper_scroll)
+	//initSlidersScroll();
+	//
+	//filterSelection();
+});
