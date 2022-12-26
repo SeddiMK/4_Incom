@@ -7,7 +7,7 @@
 // Подключаем слайдер Swiper из node_modules
 // При необходимости подключаем дополнительные модули слайдера, указывая их в {} через запятую
 // Пример: { Navigation, Autoplay }
-import Swiper, { Navigation } from 'swiper';
+import Swiper, { Navigation, Manipulation } from 'swiper';
 /*
 Основниые модули слайдера:
 Navigation, Pagination, Autoplay, 
@@ -23,23 +23,24 @@ import "../../scss/base/swiper.scss";
 // Полный набор стилей из node_modules
 //import 'swiper/css';
 
+
+
 // Инициализация слайдеров
 function initSliders() {
 	// Перечень слайдеров
 	// Проверяем, есть ли слайдер на стронице
 	if (document.querySelector('.swiper')) { // Указываем скласс нужного слайдера
 		// Создаем слайдер
-		new Swiper('.swiper', { // Указываем скласс нужного слайдера
+		const swiper = new Swiper('.swiper', { // Указываем скласс нужного слайдера
 			// Подключаем модули слайдера
 			// для конкретного случая
-			modules: [Navigation],
-			//observer: true,
+			modules: [Navigation, Manipulation],
+			observer: true,
 			//observeParents: true,
 			slidesPerView: 1,
 			spaceBetween: 0,
 			//autoHeight: true,
 			//speed: 800,
-
 			//touchRatio: 0,
 			//simulateTouch: false,
 			//loop: true,
@@ -121,7 +122,16 @@ function initSliders() {
 //filterSelection('secondary') // Execute the function and show all columns
 //Выполнить функцию и показать все столбцы
 
-const swiper = document.querySelector('.swiper').swiper;
+//const swiper = document.querySelector('.swiper').swiper;
+
+const swiper = new Swiper('.swiper', {
+	modules: [Navigation, Manipulation],
+	observer: true,
+	observeParents: true,
+	observeSlideChildren: true,
+	slidesPerView: 1,
+	spaceBetween: 0,
+});
 
 // Now you can use all slider methods like
 // swiper.slideNext();
@@ -130,28 +140,48 @@ const secondary = document.querySelector(".catalog__btn-secondary");
 const newBuildings = document.querySelector(".catalog__btn-new-buildings");
 const rent = document.querySelector(".catalog__btn-rent");
 const house = document.querySelector(".catalog__btn-house");
-console.log(newBuildings);
+
+
 
 if (secondary) {
-	secondary.addEventListener('click', () => {
-		filterSelection("secondary");
-
+	secondary.addEventListener('click', function (e) {
+		// filterSelection("secondary");
+		// swiper.addSlide(0, [
+		// 	`<div class="catalog__sld secondary swiper-slide">
+		// 	< img src = "@img/catalog/catalog-swiper/secondary/2.jpg" alt = "Фото квартиры" >
+		// 						</div > `,
+		// 	`<div class="catalog__sld secondary swiper-slide">
+		// 	< img src = "@img/catalog/catalog-swiper/secondary/2.jpg" alt = "Фото квартиры" >
+		// 						</div > `,
+		// 	`<div class="catalog__sld secondary swiper-slide">
+		// 	< img src = "@img/catalog/catalog-swiper/secondary/2.jpg" alt = "Фото квартиры" >
+		// 						</div >`
+		// ]);
+		swiper.removeSlide([3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]);
+		swiper.update();
 	});
 };
 if (newBuildings) {
 	newBuildings.addEventListener('click', () => {
-		filterSelection("newBuildings");
+		// filterSelection("newBuildings");
+		swiper.removeSlide([0, 1, 2, 7, 8, 9, 10, 11, 12, 13, 14]);
+		swiper.update();
 	});
 };
 
 if (rent) {
 	rent.addEventListener('click', () => {
-		filterSelection("rent");
+		// filterSelection("rent");
+		swiper.removeSlide([0, 1, 2, 3, 4, 5, 6, 10, 11, 12, 13, 14]);
+		swiper.update();
 	});
 };
 if (house) {
 	house.addEventListener('click', () => {
-		filterSelection("house");
+		// filterSelection("house");
+
+		swiper.removeSlide([0, 1, 2, 3, 4, 5, 6, 7, 8, 9,]);
+		swiper.update();
 	});
 };
 
