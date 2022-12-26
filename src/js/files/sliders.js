@@ -101,7 +101,9 @@ function initSliders() {
 			*/
 			// События
 			on: {
-
+				init: function () {
+					console.log('swiper initialized');
+				},
 			}
 		});
 	}
@@ -119,33 +121,73 @@ function initSliders() {
 //filterSelection('secondary') // Execute the function and show all columns
 //Выполнить функцию и показать все столбцы
 
+const swiper = document.querySelector('.swiper').swiper;
 
-filterSelection()
-function filterSelection(c) {
-	var x, i;
-	var catalogWrp = document.getElementById("catalogWrp");
-	x = catalogWrp.getElementsByClassName("catalog__sld");// column
+// Now you can use all slider methods like
+// swiper.slideNext();
+// swiper.update()
+const secondary = document.querySelector(".catalog__btn-secondary");
+const newBuildings = document.querySelector(".catalog__btn-new-buildings");
+const rent = document.querySelector(".catalog__btn-rent");
+const house = document.querySelector(".catalog__btn-house");
+console.log(newBuildings);
 
-	//if (c == "secondary") c = "";
+if (secondary) {
+	secondary.addEventListener('click', () => {
+		filterSelection("secondary");
 
-	// Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
-	// Добавьте класс «show» (display: block) к отфильтрованным элементам и удалите класс «show» из элементов, которые не выбраны.
-	for (i = 0; i < x.length; i++) {
-		w3RemoveClass(x[i], "swiper-slide");//show
+	});
+};
+if (newBuildings) {
+	newBuildings.addEventListener('click', () => {
+		filterSelection("newBuildings");
+	});
+};
 
-		if (x[i].className.indexOf(c) > -1) {
-			w3AddClass(x[i], "swiper-slide")
-		};//show
-	}
+if (rent) {
+	rent.addEventListener('click', () => {
+		filterSelection("rent");
+	});
+};
+if (house) {
+	house.addEventListener('click', () => {
+		filterSelection("house");
+	});
+};
 
-}
-// var x, i;
-// x = document.getElementsByClassName("catalog__sld");
-//w3AddClass(x[0], "swiper-slide");
-//console.log(x);
+
+
+
+// document.getElementById("clickSecondary").onclick = filterSelection;
+// document.getElementById("clickNewBuildings").onclick = filterSelection;
+// const catalogWrp = document.getElementById("catalogWrp");
+// catalogWrp.getElementsByClassName("secondary").onclick = filterSelection;
+// catalogWrp.getElementsByClassName("new-buildings").onclick = filterSelection;
+
+//======================================================================
+
+//======================================================================
+// Execute the function and show all columns
+//Выполнить функцию и показать все столбцы
+//filterSelection("all")
+// function filterSelection(c) {
+// 	console.log(c);
+// 	var x, i;
+// 	x = document.getElementsByClassName("catalog__slider");
+// 	//if (c == "all") c = "";
+// 	for (i = 0; i < x.length; i++) {
+
+// 		w3RemoveClass(x[i], "swiper swiper-initialized swiper-horizontal swiper-pointer-events");
+
+// 		if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "swiper swiper-initialized swiper-horizontal swiper-pointer-events");
+
+// 	}
+
+// }
 // Show filtered elements
 // Показать отфильтрованные элементы
 function w3AddClass(element, name) {
+
 	var i, arr1, arr2;
 	arr1 = element.className.split(" ");
 	arr2 = name.split(" ");
@@ -155,7 +197,6 @@ function w3AddClass(element, name) {
 		}
 	}
 }
-
 // Hide elements that are not selected
 // Скрыть невыбранные элементы
 function w3RemoveClass(element, name) {
@@ -170,9 +211,8 @@ function w3RemoveClass(element, name) {
 	element.className = arr1.join(" ");
 }
 
-// Add active class to the current button (highlight it)
-// Добавить активный класс наблюдения (выделить ее)
-var btnContainer = document.getElementById("myBtnContainer");
+// Добавьте активный класс к текущей кнопке (выделите его)
+var btnContainer = document.querySelector(".catalog__btn-block");
 var btns = btnContainer.getElementsByClassName("button"); //btn
 for (var i = 0; i < btns.length; i++) {
 	btns[i].addEventListener("click", function () {
@@ -181,7 +221,6 @@ for (var i = 0; i < btns.length; i++) {
 		this.className += " active-btn";
 	});
 }
-
 
 
 //swiper.slideTo(index, speed, runCallbacks)

@@ -50,119 +50,158 @@ anchors.forEach((anchor) => {
 });
 
 /*============= Пподключаем сладер ==============================*/
-/* Устанавливаем стартовый индекс слайда по умолчанию: */
-let slideIndex = 1;
-/* Вызываем функцию, которая реализована ниже: */
-showSlides(slideIndex);
+//document.getElementById("buttonPrev").onclick = previousSlide;
+//document.getElementById("buttonNext").onclick = nextSlide;
 
-/* Увеличиваем индекс на 1 — показываем следующий слайд: */
-document.getElementById("buttonPrev").onclick = previousSlide;
-document.getElementById("buttonNext").onclick = nextSlide;
-function nextSlide() {
-	showSlides(slideIndex += 1);
-}
+// const swiperButtonPrev = document.querySelector(".swiper-button-prev");
+// const swiperButtonNext = document.querySelector(".swiper-button-next");
 
-/* Уменьшаем индекс на 1 — показываем предыдущий слайд: */
-function previousSlide() {
-	showSlides(slideIndex -= 1);
-}
+// swiperButtonPrev.addEventListener('click', previousSlide);
+// swiperButtonNext.addEventListener('click', nextSlide);
 
-/* Устанавливаем текущий слайд: */
-function currentSlide(n) {
-	showSlides(slideIndex = n);
-}
+// /* Устанавливаем стартовый индекс слайда по умолчанию: */
+// let slideIndex = 1;
+// /* Вызываем функцию, которая реализована ниже: */
+// showSlides(slideIndex);
 
-/* Функция перелистывания: */
-function showSlides(n) {
-	/* Обращаемся к элементам с названием класса "item", то есть к картинкам: */
-	let slides = document.getElementsByClassName("catalog__sld");
+// /* Увеличиваем индекс на 1 — показываем следующий слайд: */
 
-	/* Проверяем количество слайдов: */
-	if (n > slides.length) {
-		slideIndex = 1
-	}
-	if (n < 1) {
-		slideIndex = slides.length
-	}
 
-	/* Проходим по каждому слайду в цикле for: */
-	for (let slide of slides) {
-		slide.style.display = "none";
-	}
-	/* Делаем элемент блочным: */
-	slides[slideIndex - 1].style.display = "block";
-}
+// function nextSlide() {
+// 	showSlides(slideIndex += 1);
+// }
+
+// /* Уменьшаем индекс на 1 — показываем предыдущий слайд: */
+// function previousSlide() {
+// 	showSlides(slideIndex -= 1);
+// }
+
+// /* Устанавливаем текущий слайд: */
+// function currentSlide(n) {
+// 	showSlides(slideIndex = n);
+// }
+
+// /* Функция перелистывания: */
+// function showSlides(n) {
+// 	/* Обращаемся к элементам с названием класса "item", то есть к картинкам: */
+// 	let slides = document.getElementsByClassName("catalog__sld");
+
+// 	/* Проверяем количество слайдов: */
+// 	if (n > slides.length) {
+// 		slideIndex = 1
+// 	}
+// 	if (n < 1) {
+// 		slideIndex = slides.length
+// 	}
+
+// 	/* Проходим по каждому слайду в цикле for: */
+// 	for (let slide of slides) {
+// 		slide.style.display = "none";
+// 	}
+// 	/* Делаем элемент блочным: */
+// 	slides[slideIndex - 1].style.display = "block";
+// }
 //=====================================================
 // ==================Переход к определенному слайду =====================
 
-//var el = document.getElementById("clickSecondary");
-// if (el.addEventListener)
-// 	el.addEventListener("click", filterSelection, false);
-// else if (el.attachEvent)
-// 	el.attachEvent('onclick', filterSelection);
-// document.getElementById("clickSecondary").onclick = filterSelection;
-// document.getElementById("clickNewBuildings").onclick = filterSelection;
-// const catalogWrp = document.getElementById("catalogWrp");
-// catalogWrp.getElementsByClassName("secondary").onclick = filterSelection;
-// catalogWrp.getElementsByClassName("new-buildings").onclick = filterSelection;
-//catalogWrp.getElementsByClassName("catalog__sld").onclick = filterSelection;
-//catalogWrp.getElementsByClassName("catalog__sld").onclick = filterSelection;
-//filterSelection('secondary') // Execute the function and show all columns
-//Выполнить функцию и показать все столбцы
-filterSelection("all")
-function filterSelection(c) {
+// const secondary = document.querySelector(".catalog__btn-secondary");
+// const newBuildings = document.querySelector(".catalog__btn-new-buildings");
+// const rent = document.querySelector(".catalog__btn-rent");
+// const house = document.querySelector(".catalog__btn-house");
+// console.log(newBuildings);
 
-	var x, i;
-	x = document.getElementsByClassName("catalog__sld");
-	if (c == "all") c = "";
-	for (i = 0; i < x.length; i++) {
+// if (secondary) {
+// 	secondary.addEventListener('click', () => {
+// 		filterSelection("secondary");
+// 	});
+// };
+// if (newBuildings) {
+// 	newBuildings.addEventListener('click', () => {
+// 		filterSelection("newBuildings");
+// 	});
+// };
 
-		w3RemoveClass(x[i], "show");
+// newBuildings.addEventListener('click', () => {
+// 	filterSelection("newBuildings");
+// });
 
-		if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+// if (rent) {
+// 	rent.addEventListener('click', () => {
+// 		filterSelection("rent");
+// 	});
+// };
+// if (house) {
+// 	house.addEventListener('click', () => {
+// 		filterSelection("house");
+// 	});
+// };
 
-	}
-}
-// Show filtered elements
-// Показать отфильтрованные элементы
-function w3AddClass(element, name) {
 
-	var i, arr1, arr2;
-	arr1 = element.className.split(" ");
-	arr2 = name.split(" ");
-	for (i = 0; i < arr2.length; i++) {
-		if (arr1.indexOf(arr2[i]) == -1) {
-			element.className += " " + arr2[i];
+// //console.log(secondary.addEventListener('click', filterSelection("secondary")));
+// // newBuildings.addEventListener('click', filterSelection("new-buildings"));
+// // rent.addEventListener('click', filterSelection("rent"));
+// // house.addEventListener('click', filterSelection("house"));
 
-		}
-	}
-}
-// Hide elements that are not selected
-// Скрыть невыбранные элементы
-function w3RemoveClass(element, name) {
-	var i, arr1, arr2;
-	arr1 = element.className.split(" ");
 
-	arr2 = name.split(" ");
+// // document.getElementById("clickSecondary").onclick = filterSelection;
+// // document.getElementById("clickNewBuildings").onclick = filterSelection;
+// // const catalogWrp = document.getElementById("catalogWrp");
+// // catalogWrp.getElementsByClassName("secondary").onclick = filterSelection;
+// // catalogWrp.getElementsByClassName("new-buildings").onclick = filterSelection;
 
-	for (i = 0; i < arr2.length; i++) {
-		while (arr1.indexOf(arr2[i]) > -1) {
-			arr1.splice(arr1.indexOf(arr2[i]), 1);
-		}
-	}
-	element.className = arr1.join(" ");
-}
+// //filterSelection('secondary') // Execute the function and show all columns
+// //Выполнить функцию и показать все столбцы
+// //filterSelection("all")
+// function filterSelection(c) {
+// 	console.log(c);
+// 	var x, i;
+// 	x = document.getElementsByClassName("catalog__sld");
+// 	//if (c == "all") c = "";
+// 	for (i = 0; i < x.length; i++) {
 
-// Добавьте активный класс к текущей кнопке (выделите его)
-var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("button"); //btn
-for (var i = 0; i < btns.length; i++) {
-	btns[i].addEventListener("click", function () {
-		var current = document.getElementsByClassName("active-btn");
-		current[0].className = current[0].className.replace(" active-btn", "");
-		this.className += " active-btn";
-	});
-}
+// 		w3RemoveClass(x[i], "show");
+
+// 		if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+
+// 	}
+// }
+// // Show filtered elements
+// // Показать отфильтрованные элементы
+// function w3AddClass(element, name) {
+
+// 	var i, arr1, arr2;
+// 	arr1 = element.className.split(" ");
+// 	arr2 = name.split(" ");
+// 	for (i = 0; i < arr2.length; i++) {
+// 		if (arr1.indexOf(arr2[i]) == -1) {
+// 			element.className += " " + arr2[i];
+// 		}
+// 	}
+// }
+// // Hide elements that are not selected
+// // Скрыть невыбранные элементы
+// function w3RemoveClass(element, name) {
+// 	var i, arr1, arr2;
+// 	arr1 = element.className.split(" ");
+// 	arr2 = name.split(" ");
+// 	for (i = 0; i < arr2.length; i++) {
+// 		while (arr1.indexOf(arr2[i]) > -1) {
+// 			arr1.splice(arr1.indexOf(arr2[i]), 1);
+// 		}
+// 	}
+// 	element.className = arr1.join(" ");
+// }
+
+// // Добавьте активный класс к текущей кнопке (выделите его)
+// var btnContainer = document.querySelector(".catalog__btn-block");
+// var btns = btnContainer.getElementsByClassName("button"); //btn
+// for (var i = 0; i < btns.length; i++) {
+// 	btns[i].addEventListener("click", function () {
+// 		var current = document.getElementsByClassName("active-btn");
+// 		current[0].className = current[0].className.replace(" active-btn", "");
+// 		this.className += " active-btn";
+// 	});
+// }
 
 /*============= Переключаем сладеры ==============================*/
 // const btnSecondary = document.querySelector('.catalog__btn-secondary');
