@@ -35,7 +35,87 @@ function initSliders() {
 			// Подключаем модули слайдера
 			// для конкретного случая
 			modules: [Navigation, Manipulation],
-			observer: true,
+			//observer: true,
+			//observeParents: true,
+			slidesPerView: 1,
+			spaceBetween: 0,
+			//autoHeight: true,
+			//speed: 800,
+			//touchRatio: 0,
+			//simulateTouch: false,
+			//loop: true,
+			//preloadImages: false,
+			//lazy: true,
+
+			/*
+			// Эффекты
+			effect: 'fade',
+			autoplay: {
+				delay: 3000,
+				disableOnInteraction: false,
+			},
+			*/
+
+			// Пагинация
+			/*
+			pagination: {
+				el: '.swiper-pagination',
+				clickable: true,
+			},
+			*/
+
+			// Скроллбар
+			/*
+			scrollbar: {
+				el: '.swiper-scrollbar',
+				draggable: true,
+			},
+			*/
+
+			// Кнопки "влево/вправо"
+			navigation: {
+				prevEl: '.swiper-button-prev',
+				nextEl: '.swiper-button-next',
+			},
+
+			// Брейкпоинты
+			/*
+			breakpoints: {
+				320: {
+					slidesPerView: 1,
+					spaceBetween: 0,
+					autoHeight: true,
+				},
+				768: {
+					slidesPerView: 2,
+					spaceBetween: 20,
+				},
+				992: {
+					slidesPerView: 3,
+					spaceBetween: 20,
+				},
+				1268: {
+					slidesPerView: 4,
+					spaceBetween: 30,
+				},
+			},
+			*/
+			// События
+			on: {
+				init: function () {
+					console.log('swiper initialized');
+				},
+			}
+		});
+	}
+	// Проверяем, есть ли слайдер на стронице
+	if (document.querySelector('.swiper-newBuildings')) { // Указываем скласс нужного слайдера
+		// Создаем слайдер
+		const swiper = new Swiper('.swiper-newBuildings', { // Указываем скласс нужного слайдера
+			// Подключаем модули слайдера
+			// для конкретного случая
+			modules: [Navigation, Manipulation],
+			//observer: true,
 			//observeParents: true,
 			slidesPerView: 1,
 			spaceBetween: 0,
@@ -110,6 +190,7 @@ function initSliders() {
 	}
 }
 
+
 // ==================Переход к определенному слайду =====================
 
 //var el = document.getElementById("clickSecondary");
@@ -131,6 +212,30 @@ const swiper = new Swiper('.swiper', {
 	observeSlideChildren: true,
 	slidesPerView: 1,
 	spaceBetween: 0,
+
+	navigation: {
+		prevEl: '.swiper-button-prev',
+		nextEl: '.swiper-button-next',
+	},
+	a11y: true,
+	keyboardControl: true,
+	grabCursor: true,
+});
+const swiperNewBuildings = new Swiper('.swiper-newBuildings', {
+	modules: [Navigation, Manipulation],
+	observer: true,
+	observeParents: true,
+	observeSlideChildren: true,
+	slidesPerView: 1,
+	spaceBetween: 0,
+
+	navigation: {
+		prevEl: '.swiper-button-prev',
+		nextEl: '.swiper-button-next',
+	},
+	a11y: true,
+	keyboardControl: true,
+	grabCursor: true,
 });
 
 // Now you can use all slider methods like
@@ -145,42 +250,31 @@ const house = document.querySelector(".catalog__btn-house");
 
 if (secondary) {
 	secondary.addEventListener('click', function (e) {
-		// filterSelection("secondary");
-		// swiper.addSlide(0, [
-		// 	`<div class="catalog__sld secondary swiper-slide">
-		// 	< img src = "@img/catalog/catalog-swiper/secondary/2.jpg" alt = "Фото квартиры" >
-		// 						</div > `,
-		// 	`<div class="catalog__sld secondary swiper-slide">
-		// 	< img src = "@img/catalog/catalog-swiper/secondary/2.jpg" alt = "Фото квартиры" >
-		// 						</div > `,
-		// 	`<div class="catalog__sld secondary swiper-slide">
-		// 	< img src = "@img/catalog/catalog-swiper/secondary/2.jpg" alt = "Фото квартиры" >
-		// 						</div >`
-		// ]);
-		swiper.removeSlide([3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]);
+		filterSelection("secondary");
+
 		swiper.update();
 	});
 };
 if (newBuildings) {
 	newBuildings.addEventListener('click', () => {
-		// filterSelection("newBuildings");
-		swiper.removeSlide([0, 1, 2, 7, 8, 9, 10, 11, 12, 13, 14]);
+		filterSelection("newBuildings");
+		//swiper.removeSlide([0, 1, 2, 7, 8, 9, 10, 11, 12, 13, 14]);
 		swiper.update();
 	});
 };
 
 if (rent) {
 	rent.addEventListener('click', () => {
-		// filterSelection("rent");
-		swiper.removeSlide([0, 1, 2, 3, 4, 5, 6, 10, 11, 12, 13, 14]);
+		filterSelection("rent");
+		//swiper.removeSlide([0, 1, 2, 3, 4, 5, 6, 10, 11, 12, 13, 14]);
 		swiper.update();
 	});
 };
 if (house) {
 	house.addEventListener('click', () => {
-		// filterSelection("house");
+		filterSelection("house");
 
-		swiper.removeSlide([0, 1, 2, 3, 4, 5, 6, 7, 8, 9,]);
+		//swiper.removeSlide([0, 1, 2, 3, 4, 5, 6, 7, 8, 9,]);
 		swiper.update();
 	});
 };
@@ -200,20 +294,20 @@ if (house) {
 // Execute the function and show all columns
 //Выполнить функцию и показать все столбцы
 //filterSelection("all")
-// function filterSelection(c) {
-// 	console.log(c);
-// 	var x, i;
-// 	x = document.getElementsByClassName("catalog__slider");
-// 	//if (c == "all") c = "";
-// 	for (i = 0; i < x.length; i++) {
+function filterSelection(c) {
 
-// 		w3RemoveClass(x[i], "swiper swiper-initialized swiper-horizontal swiper-pointer-events");
+	var x, i;
+	x = document.getElementsByClassName("catalog__slider");
+	//if (c == "all") c = "";
+	for (i = 0; i < x.length; i++) {
 
-// 		if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "swiper swiper-initialized swiper-horizontal swiper-pointer-events");
+		w3RemoveClass(x[i], "active-swiper");
 
-// 	}
+		if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "active-swiper");
 
-// }
+	}
+	swiper.update();
+}
 // Show filtered elements
 // Показать отфильтрованные элементы
 function w3AddClass(element, name) {
@@ -359,5 +453,6 @@ window.addEventListener("load", function (e) {
 	// Запуск инициализации скролла на базе слайдера (по классу swiper_scroll)
 	//initSlidersScroll();
 	//
-	//filterSelection();
+	//filterSelection("secondary");
+
 });
