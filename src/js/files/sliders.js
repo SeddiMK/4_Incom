@@ -35,95 +35,16 @@ function initSliders() {
 			// Подключаем модули слайдера
 			// для конкретного случая
 			modules: [Navigation, Manipulation],
-			//observer: true,
-			//observeParents: true,
+			observer: true,
+			observeParents: true,
 			slidesPerView: 1,
+			//initialSlide: 0,
 			spaceBetween: 0,
 			//autoHeight: true,
 			//speed: 800,
 			//touchRatio: 0,
 			//simulateTouch: false,
-			//loop: true,
-			//preloadImages: false,
-			//lazy: true,
-
-			/*
-			// Эффекты
-			effect: 'fade',
-			autoplay: {
-				delay: 3000,
-				disableOnInteraction: false,
-			},
-			*/
-
-			// Пагинация
-			/*
-			pagination: {
-				el: '.swiper-pagination',
-				clickable: true,
-			},
-			*/
-
-			// Скроллбар
-			/*
-			scrollbar: {
-				el: '.swiper-scrollbar',
-				draggable: true,
-			},
-			*/
-
-			// Кнопки "влево/вправо"
-			navigation: {
-				prevEl: '.swiper-button-prev',
-				nextEl: '.swiper-button-next',
-			},
-
-			// Брейкпоинты
-			/*
-			breakpoints: {
-				320: {
-					slidesPerView: 1,
-					spaceBetween: 0,
-					autoHeight: true,
-				},
-				768: {
-					slidesPerView: 2,
-					spaceBetween: 20,
-				},
-				992: {
-					slidesPerView: 3,
-					spaceBetween: 20,
-				},
-				1268: {
-					slidesPerView: 4,
-					spaceBetween: 30,
-				},
-			},
-			*/
-			// События
-			on: {
-				init: function () {
-					console.log('swiper initialized');
-				},
-			}
-		});
-	}
-	// Проверяем, есть ли слайдер на стронице
-	if (document.querySelector('.swiper-newBuildings')) { // Указываем скласс нужного слайдера
-		// Создаем слайдер
-		const swiper = new Swiper('.swiper-newBuildings', { // Указываем скласс нужного слайдера
-			// Подключаем модули слайдера
-			// для конкретного случая
-			modules: [Navigation, Manipulation],
-			//observer: true,
-			//observeParents: true,
-			slidesPerView: 1,
-			spaceBetween: 0,
-			//autoHeight: true,
-			//speed: 800,
-			//touchRatio: 0,
-			//simulateTouch: false,
-			//loop: true,
+			loop: true,
 			//preloadImages: false,
 			//lazy: true,
 
@@ -193,102 +114,68 @@ function initSliders() {
 
 // ==================Переход к определенному слайду =====================
 
-//var el = document.getElementById("clickSecondary");
-// if (el.addEventListener)
-// 	el.addEventListener("click", filterSelection, false);
-// else if (el.attachEvent)
-// 	el.attachEvent('onclick', filterSelection);
-// document.getElementById("clickSecondary").onclick = filterSelection;
-// document.getElementById("clickNewBuildings").onclick = filterSelection;
-//filterSelection('secondary') // Execute the function and show all columns
+// Execute the function and show all columns
 //Выполнить функцию и показать все столбцы
 
 //const swiper = document.querySelector('.swiper').swiper;
 
-const swiper = new Swiper('.swiper', {
-	modules: [Navigation, Manipulation],
-	observer: true,
-	observeParents: true,
-	observeSlideChildren: true,
-	slidesPerView: 1,
-	spaceBetween: 0,
+// const swiper = new Swiper('.swiper', {
+// 	modules: [Navigation, Manipulation],
+// 	observer: true,
+// 	observeParents: true,
+// 	observeSlideChildren: true,
+// 	slidesPerView: 1,
+// 	spaceBetween: 0,
+// 	loop: true,
+// 	//initialSlide: 0,
 
-	navigation: {
-		prevEl: '.swiper-button-prev',
-		nextEl: '.swiper-button-next',
-	},
-	a11y: true,
-	keyboardControl: true,
-	grabCursor: true,
-});
-const swiperNewBuildings = new Swiper('.swiper-newBuildings', {
-	modules: [Navigation, Manipulation],
-	observer: true,
-	observeParents: true,
-	observeSlideChildren: true,
-	slidesPerView: 1,
-	spaceBetween: 0,
+// 	navigation: {
+// 		prevEl: '.swiper-button-prev',
+// 		nextEl: '.swiper-button-next',
+// 	},
+// 	a11y: true,
+// 	keyboardControl: true,
+// 	grabCursor: true,
+// });
 
-	navigation: {
-		prevEl: '.swiper-button-prev',
-		nextEl: '.swiper-button-next',
-	},
-	a11y: true,
-	keyboardControl: true,
-	grabCursor: true,
-});
-
-// Now you can use all slider methods like
-// swiper.slideNext();
-// swiper.update()
 const secondary = document.querySelector(".catalog__btn-secondary");
 const newBuildings = document.querySelector(".catalog__btn-new-buildings");
 const rent = document.querySelector(".catalog__btn-rent");
 const house = document.querySelector(".catalog__btn-house");
 
 
-
 if (secondary) {
 	secondary.addEventListener('click', function (e) {
 		filterSelection("secondary");
-
-		swiper.update();
+		//swiper.update();
 	});
 };
 if (newBuildings) {
 	newBuildings.addEventListener('click', () => {
 		filterSelection("newBuildings");
-		//swiper.removeSlide([0, 1, 2, 7, 8, 9, 10, 11, 12, 13, 14]);
-		swiper.update();
+		//swiper.update();
 	});
 };
 
 if (rent) {
 	rent.addEventListener('click', () => {
 		filterSelection("rent");
-		//swiper.removeSlide([0, 1, 2, 3, 4, 5, 6, 10, 11, 12, 13, 14]);
-		swiper.update();
+		//swiper.update();
 	});
 };
 if (house) {
 	house.addEventListener('click', () => {
 		filterSelection("house");
-
-		//swiper.removeSlide([0, 1, 2, 3, 4, 5, 6, 7, 8, 9,]);
-		swiper.update();
+		//swiper.update();
 	});
 };
 
-
-
-
+//======================================================================
 // document.getElementById("clickSecondary").onclick = filterSelection;
 // document.getElementById("clickNewBuildings").onclick = filterSelection;
 // const catalogWrp = document.getElementById("catalogWrp");
 // catalogWrp.getElementsByClassName("secondary").onclick = filterSelection;
 // catalogWrp.getElementsByClassName("new-buildings").onclick = filterSelection;
-
-//======================================================================
 
 //======================================================================
 // Execute the function and show all columns
@@ -306,7 +193,7 @@ function filterSelection(c) {
 		if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "active-swiper");
 
 	}
-	swiper.update();
+	//swiper.update();
 }
 // Show filtered elements
 // Показать отфильтрованные элементы
@@ -346,8 +233,6 @@ for (var i = 0; i < btns.length; i++) {
 	});
 }
 
-
-//swiper.slideTo(index, speed, runCallbacks)
 //======== Переключение слайдеров 4 в 1 ================================
 // var menu_obj = ['Все', 'Последние']
 
@@ -444,8 +329,6 @@ for (var i = 0; i < btns.length; i++) {
 
 
 
-
-
 ///////////////// Не удалять !!!!!!!!!!!!!!!!!!!!!
 window.addEventListener("load", function (e) {
 	// Запуск инициализации слайдеров
@@ -453,6 +336,6 @@ window.addEventListener("load", function (e) {
 	// Запуск инициализации скролла на базе слайдера (по классу swiper_scroll)
 	//initSlidersScroll();
 	//
-	//filterSelection("secondary");
+	filterSelection("secondary");
 
 });

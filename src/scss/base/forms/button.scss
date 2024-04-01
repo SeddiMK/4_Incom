@@ -51,6 +51,7 @@
 	}
 }
 
+
 .button--border-opacity {
 	background: none;
 	outline: 2px solid $mainColorSundance;
@@ -81,4 +82,14 @@
 
 .button--pading23-35 {
 	padding: 23px 35px;
+}
+
+.active-btn {
+	background-color: $mainColorSundance;
+	color: #FFFFFF;
+	box-shadow: 0px 4px 20px rgba(207, 165, 91, 0.5);
+}
+
+.button--pading25-40 {
+	padding: 23px 40px;
 }
